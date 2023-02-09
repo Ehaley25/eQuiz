@@ -1,20 +1,25 @@
+import { useEffect } from 'react'
 import { useState } from 'react'
 import Questions from './components/Questions'
 
 function App() {
-  const [trivia , setTrivia] = useState('test')
+  const [trivia , setTrivia] = useState([])
 
-  fetch('https://opentdb.com/api.php?amount=5&type=multiple')
-  .then(res => res.json())
-  .then( data => console.log(data.results))
 
+  useEffect(() => {
+      fetch('https://opentdb.com/api.php?amount=5&type=multiple')
+      .then(res => res.json())
+      .then(data => setTrivia(data.results))
+  }, [])
+
+  console.log(trivia)
   return (
     <div className="App">
       <Questions test = 'elijah' />
-      <Questions test = 'test'/>
-      <Questions test = 'loser'/>
-      <Questions test = 'boss'/>
-      <Questions test = 'ye'/>
+      <Questions test = 'elijah'/>
+      <Questions test = 'elijah'/>
+      <Questions test = 'elijah'/>
+      <Questions test = 'elijah'/>
     </div>
   )
 }
