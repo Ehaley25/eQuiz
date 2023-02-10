@@ -3,7 +3,8 @@ import React from "react";
 export default function Questions(props){
     return(
         <>
-            <p>{props.test}</p>
+            <p>{props.question}</p>
+            <button>{props.answers}</button>
         </>
     )
 }
