@@ -11,7 +11,7 @@ function App() {
     .then(data => setTrivia(data.results.map(eachQuestion =>{
       return{
         ...eachQuestion,
-          id: nanoid(8),
+          // id: nanoid(8),
           question: eachQuestion.question.replace(/&[#A-Za-z0-9]+;/gi, ""),
           incorrect_answers: [
             ...eachQuestion.incorrect_answers,
@@ -22,17 +22,22 @@ function App() {
   }, [])
 
 
-  let triviaElement = trivia.map(eachQuestion => 
-    // let test = add variable to map and add to question so they're separate instead of an array (GuessWork)
-    {return <Questions 
-        key={eachQuestion.id}
-        question={eachQuestion.question}
-
-        // answers={eachQuestion.incorrect_answers.map(eachAnswer =>{
-        //   return eachAnswer
-        // })}
-      />
+  let triviaElement = trivia.map(eachQuestion => {
+    let answers = eachQuestion.incorrect_answers.map(answer =>{
+      return <button key={nanoid(9)}>{answer}</button>
     })
+    let questions = eachQuestion.question
+    return <Questions 
+    key = {nanoid(9)}
+    questions = {questions}
+    answers = {answers}
+    /> 
+  })
+
+  // let triviaElement = trivia.map(eachQuestion => {
+  //     console.log(eachQuestion.question)
+  //   })
+
 
   return (
     <div className="App">
@@ -43,7 +48,7 @@ function App() {
 
 export default App
 
-
+// add variable to map and add to question so they're separate instead of an array (GuessWork)
 // from the api i need,
 // incorrect answers, correct answers , questions 
 

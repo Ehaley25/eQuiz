@@ -2,12 +2,9 @@ import React from "react";
 
 export default function Questions(props){
     return(
-        <>
-            <p>{props.question}</p>
-            <button>{props.answers}</button>
-        </>
+        <div>
+            <p>{props.questions}</p>
+            <div>{props.answers}</div>
+        </div>
     )
 }
-// pass props to "questions" that involve question & answers
-
-// I THINK
